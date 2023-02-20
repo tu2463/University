@@ -1,28 +1,39 @@
 67-272: University 
-===
+---
+
 This project was created as means of giving students an opportunity to practice course concepts with some in-class learning exercises. There is no pretense that this is a production-ready system or that it has 100 percent test coverage -- these are for learning purposes.  
 
 Some items and helper files have been added in advance to speed up time in-class to complete these exercises.  For example, Prof. H's `minitest_extensions` module is present and included in `test/test_helper.rb` by default.  Another example is that `validates_timeliness` gem is installed and the initializer for that gem has also been run for you.  Note that time zone in `config/application.rb` was defaulted to Eastern (Pgh) time; feel free to change this as appropriate.
 
-You may work and talk with others in class for help completing this exercise.
+This branch is for an exercise in building controllers.  Specifically, you need to build a controller for departments that handles the following:
 
+- index: a list of all department objects in the system
+- show: presents the details of a particular department in the system
+- new: provides a form to enter a new department into the system
+- edit: provides the same form, prepopulated with a particular department, to be used to edit department data
 
-Instructions for Part 1
----
-Having cloned this repo to your laptop (recommended) or gotten the zip file from GitHub, we need to set up the project as follows:
+To start this exercise, first run `rake db:contexts` and reset the database and create a series of departments to work with.
 
-1. Install gems with `bundle install`
-2. Create the database with `rails db:migrate`
-3. Open up `app/models/department.rb` and review the code
-4. Open up `test/models/department_test.rb` and complete the tests so this is at 100% coverage for this model
-5. Open up `app/models/faculty.rb` and review the code comments given
-6. Open up `test/models/faculty_test.rb` and complete the tests so the methods commented on will be covered properly and completely
-	- this will require you to set up a context for faculty (skelton already in place). Looking at the factory file for faculty, you see that Prof. Q is the default faculty member; probably a good idea to create the first faculty object as `@profq`.  Of course, also make sure that not every faculty you create is named 'Jeria Quesenberry' ;-)
-	- before testing, load the testing data into a clean copy of your dev database with the command `rails db:contexts`. (_Note that this is not built into Rails; it was written for you and also exists in your project starter code._) Once that's done and the contexts build without error, re-open rails console and run `Department.all` and `Faculty.all` and see that the testing context data is loaded in the dev environment.
+To make this easier, we have given you a set of controller tests in `test/controllers/departments_controller_test/rb` that will work when everything is in place.  Run the tests right now with the command `rails test:controllers` and see that all the tests fail. (To be expected because we have no controllers or routes yet.)  Read over the tests and see what they are doing and what is expected. (See comments on first test for more help.)
 
-7. Run the tests and see that tests for department passes while tests for faculty fail.
-8. Complete the code in `app/models/faculty.rb` so that the tests pass with 100% test coverage
-9. What would `Faculty.alphabetical.active.first.department` return in rails console?  Go to rails console and verify that you are correct (or if not, figure out why you were wrong)
+After this start with the following steps:
+
+1. Create a series of CRUD operation routes in `config/routes.rb`. (This can be a one-liner)  Set the root to the `departments#index` action. Verify that this is working by running `rake routes` on the command line of the terminal and see the routes that are generated.
+2. Add a new file called `departments_controller.rb` (pluralization important) within the `app/controller/` directory.  Inside the file, add the following:
+
+  ```
+  class DepartmentsController < ApplicationController
+  end
+  ```
+  
+3. Within the aforementioned class, add a method called `index` and within that method, create an instance variable called `active_departments` to hold records of departments that are active in the system, listed in alphabetical order.
+4. Next, create a method called `show` that should have an instance variable called `department` which is set set equal to `Deparment.find(params[:id])`
+5. After that, create a method called `new` that simply creates an new, empty `Department` object as an instance variable.
+6. Finally, create a method called `edit` that has the same instance variable as used in `show`.
+
+With your routes in hand and these four methods created in your controller, confidently run your tests again with `rails test:controllers` and see them all pass.
+
+Oh dear.  That didn't work as expected, did it?  If you are ahead of your peers in the exercise, try to figure out what went wrong, but take heart, we will discuss this failure in class and get you back on track easily enough.
 
 Qapla'
 
