@@ -27,7 +27,7 @@ After this start with the following steps:
   ```
   
 3. Within the aforementioned class, add a method called `index` and within that method, create an instance variable called `active_departments` to hold records of departments that are active in the system, listed in alphabetical order.
-4. Next, create a method called `show` that should have an instance variable called `department` which is set set equal to `Deparment.find(params[:id])`
+4. Next, create a method called `show` that should have an instance variable called `department` which is set set equal to `Department.find(params[:id])`
 5. After that, create a method called `new` that simply creates an new, empty `Department` object as an instance variable.
 6. Finally, create a method called `edit` that has the same instance variable as used in `show`.
 
