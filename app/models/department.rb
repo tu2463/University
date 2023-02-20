@@ -2,6 +2,12 @@ class Department < ApplicationRecord
   has_many :faculties
   has_many :courses, through: :faculties
 
+  # Scopes
+  scope :alphabetical, -> { order('name') }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where.not(active: true) }
+
+  # Validations
   validates_presence_of :name, :unit_prefix
   ### other options that work are...
   # validates_numericality_of :unit_prefix, integer_only: true, greater_than: 0, less_than: 100
