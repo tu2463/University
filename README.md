@@ -18,7 +18,7 @@ To make this easier, we have given you a set of controller tests in `test/contro
 
 After this start with the following steps:
 
-1. Create a series of CRUD operation routes in `config/routes.rb`. (This can be a one-liner)  Set the root to the `departments#index` action. Verify that this is working by running `rake routes` on the command line of the terminal and see the routes that are generated.
+1. Create a series of CRUD operation routes in `config/routes.rb`. (This can be a one-liner)  Set the root to the `departments#index` action. Verify that this is working by running `rails routes` on the command line of the terminal and see the routes that are generated.
 2. Add a new file called `departments_controller.rb` (pluralization important) within the `app/controller/` directory.  Inside the file, add the following:
 
   ```
