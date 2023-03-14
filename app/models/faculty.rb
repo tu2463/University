@@ -17,4 +17,8 @@ class Faculty < ApplicationRecord
   # rank must be either `Assistant Professor`, `Associate Professor`, or `Professor`
   validates_inclusion_of :rank, in: ["Assistant Professor", "Associate Professor", "Professor"]
 
+  def name
+    "#{last_name}, #{first_name}"
+  end
+
 end

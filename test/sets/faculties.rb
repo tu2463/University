@@ -4,6 +4,7 @@ module Contexts
       @profq  = FactoryBot.create(:faculty, department: @is)
       @koz    = FactoryBot.create(:faculty, department: @cs, first_name: "David", last_name: "Kosbie")
       @kaufer = FactoryBot.create(:faculty, department: @english, first_name: "David", last_name: "Kaufer", active: false)
+      @profh  = FactoryBot.create(:faculty, department: @is, first_name: "Larry", last_name: "Heimann")
 
       # in alphabetical order, they would be:
       # @kaufer = FactoryBot.create(:faculty, department: @english, first_name: "David", last_name: "Kaufer", active: false)
@@ -11,10 +12,5 @@ module Contexts
       # @profq  = FactoryBot.create(:faculty, department: @is)
     end
     
-    def destroy_faculties
-      @profq.destroy
-      @koz.destroy
-      @kaufer.destroy
-    end
   end
 end

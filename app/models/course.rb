@@ -8,4 +8,8 @@ class Course < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where.not(active: true) }
   scope :minis,  -> { where('units <= ?', 6) }
+
+  def course_number
+    "#{unit_prefix}-#{number}"
+  end
 end

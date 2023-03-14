@@ -44,6 +44,9 @@ gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# For serializing models to json for the API
+gem 'fast_jsonapi', '1.5'
+
 
 # Other gems
 gem 'validates_timeliness', '~> 7.0.0.beta1'
